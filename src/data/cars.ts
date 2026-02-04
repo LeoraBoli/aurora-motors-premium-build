@@ -8,6 +8,7 @@ import mclarenImg from '@/assets/car-mclaren.jpg';
 import bentleyImg from '@/assets/car-bentley.jpg';
 import rollsRoyceImg from '@/assets/car-rolls-royce.jpg';
 import porscheVideo from '@/assets/porsche-video.mp4';
+import huracanVideo from '@/assets/huracan-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -44,6 +45,7 @@ export const cars: Car[] = [
     spec2: '640 cv',
     image: lamborghiniImg,
     gallery: [lamborghiniImg, lamborghiniImg, lamborghiniImg, lamborghiniImg],
+    video: huracanVideo,
     badge: 'Destaque',
     description: 'O Lamborghini Huracán EVO representa a evolução perfeita de um superesportivo já icônico. Com motor V10 de 5.2 litros naturalmente aspirado, entrega 640 cv de potência pura e um som que emociona a cada aceleração.',
     specs: [
