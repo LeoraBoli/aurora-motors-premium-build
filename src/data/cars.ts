@@ -14,6 +14,7 @@ import rollsRoyceVideo from '@/assets/rolls-royce-video.mp4';
 import bentleyVideo from '@/assets/bentley-video.mp4';
 import audiEtronVideo from '@/assets/audi-etron-video.mp4';
 import amgGtVideo from '@/assets/amg-gt-video.mp4';
+import bmwM8Video from '@/assets/bmw-m8-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -188,6 +189,7 @@ export const cars: Car[] = [
     spec2: '625 cv',
     image: bmwImg,
     gallery: [bmwImg, bmwImg, bmwImg, bmwImg],
+    video: bmwM8Video,
     description: 'O BMW M8 Competition é a expressão máxima do luxo esportivo alemão. Com motor V8 biturbo de 625 cv, oferece performance brutal com o conforto de um gran turismo.',
     specs: [
       { label: 'Motor', value: 'V8 4.4L Biturbo' },
