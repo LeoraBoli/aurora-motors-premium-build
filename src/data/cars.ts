@@ -11,6 +11,7 @@ import porscheVideo from '@/assets/porsche-video.mp4';
 import huracanVideo from '@/assets/huracan-video.mp4';
 import ferrariVideo from '@/assets/ferrari-video.mp4';
 import rollsRoyceVideo from '@/assets/rolls-royce-video.mp4';
+import bentleyVideo from '@/assets/bentley-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -286,6 +287,7 @@ export const cars: Car[] = [
     spec2: '659 cv',
     image: bentleyImg,
     gallery: [bentleyImg, bentleyImg, bentleyImg, bentleyImg],
+    video: bentleyVideo,
     description: 'O Bentley Continental GT Speed é a combinação perfeita de potência bruta e luxo artesanal britânico. Com motor W12 biturbo, é o grand tourer definitivo.',
     specs: [
       { label: 'Motor', value: 'W12 6.0L Biturbo' },
