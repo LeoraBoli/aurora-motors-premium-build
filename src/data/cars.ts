@@ -10,6 +10,7 @@ import rollsRoyceImg from '@/assets/car-rolls-royce.jpg';
 import porscheVideo from '@/assets/porsche-video.mp4';
 import huracanVideo from '@/assets/huracan-video.mp4';
 import ferrariVideo from '@/assets/ferrari-video.mp4';
+import rollsRoyceVideo from '@/assets/rolls-royce-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -318,6 +319,7 @@ export const cars: Car[] = [
     spec2: '600 cv',
     image: rollsRoyceImg,
     gallery: [rollsRoyceImg, rollsRoyceImg, rollsRoyceImg, rollsRoyceImg],
+    video: rollsRoyceVideo,
     badge: 'Ultra Luxo',
     description: 'O Rolls-Royce Ghost Black Badge é a expressão mais ousada do luxo supremo. Com acabamentos escurecidos e potência aumentada, representa a perfeição artesanal britânica.',
     specs: [
