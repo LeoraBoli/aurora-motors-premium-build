@@ -32,13 +32,24 @@ const FeaturedCars = () => {
                   </div>
                 )}
 
-                {/* Image */}
+                {/* Image or Video */}
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img
-                    src={car.image}
-                    alt={`${car.brand} ${car.name}`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  {car.video ? (
+                    <video
+                      src={car.video}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      src={car.image}
+                      alt={`${car.brand} ${car.name}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
                 </div>
 
