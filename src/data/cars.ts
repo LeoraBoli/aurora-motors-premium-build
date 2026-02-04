@@ -7,6 +7,7 @@ import audiImg from '@/assets/car-audi-rs.jpg';
 import mclarenImg from '@/assets/car-mclaren.jpg';
 import bentleyImg from '@/assets/car-bentley.jpg';
 import rollsRoyceImg from '@/assets/car-rolls-royce.jpg';
+import porscheVideo from '@/assets/porsche-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -24,6 +25,7 @@ export interface Car {
   spec2: string;
   image: string;
   gallery: string[];
+  video?: string;
   badge?: string;
   description: string;
   specs: CarSpec[];
@@ -110,6 +112,7 @@ export const cars: Car[] = [
     spec2: '650 cv',
     image: porscheImg,
     gallery: [porscheImg, porscheImg, porscheImg, porscheImg],
+    video: porscheVideo,
     description: 'O Porsche 911 Turbo S é a referência em superesportivos para uso diário. Seu motor boxer biturbo de 3.8 litros entrega 650 cv com refinamento inigualável.',
     specs: [
       { label: 'Motor', value: 'Boxer 6 3.8L Biturbo' },

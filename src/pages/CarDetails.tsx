@@ -76,7 +76,7 @@ const CarDetails = () => {
               </div>
 
               {/* Gallery */}
-              <CarGallery images={car.gallery} carName={`${car.brand} ${car.name}`} />
+              <CarGallery images={car.gallery} video={car.video} carName={`${car.brand} ${car.name}`} />
 
               {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
