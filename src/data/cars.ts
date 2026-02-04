@@ -12,6 +12,7 @@ import huracanVideo from '@/assets/huracan-video.mp4';
 import ferrariVideo from '@/assets/ferrari-video.mp4';
 import rollsRoyceVideo from '@/assets/rolls-royce-video.mp4';
 import bentleyVideo from '@/assets/bentley-video.mp4';
+import audiEtronVideo from '@/assets/audi-etron-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -253,6 +254,7 @@ export const cars: Car[] = [
     spec2: '646 cv',
     image: audiImg,
     gallery: [audiImg, audiImg, audiImg, audiImg],
+    video: audiEtronVideo,
     badge: 'Elétrico',
     description: 'O Audi RS e-tron GT representa o futuro da performance elétrica. Com dois motores elétricos entregando 646 cv, oferece aceleração brutal com zero emissões e design revolucionário.',
     specs: [
