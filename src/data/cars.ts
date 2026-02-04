@@ -15,6 +15,7 @@ import bentleyVideo from '@/assets/bentley-video.mp4';
 import audiEtronVideo from '@/assets/audi-etron-video.mp4';
 import amgGtVideo from '@/assets/amg-gt-video.mp4';
 import bmwM8Video from '@/assets/bmw-m8-video.mp4';
+import mclarenVideo from '@/assets/mclaren-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -155,6 +156,7 @@ export const cars: Car[] = [
     spec2: '720 cv',
     image: mclarenImg,
     gallery: [mclarenImg, mclarenImg, mclarenImg, mclarenImg],
+    video: mclarenVideo,
     badge: 'Novo',
     description: 'O McLaren 720S Spider combina a emoção de um superesportivo com a liberdade de um conversível. O teto retrátil em apenas 11 segundos revela uma experiência de condução incomparável.',
     specs: [
