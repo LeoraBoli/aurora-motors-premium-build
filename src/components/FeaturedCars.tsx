@@ -1,50 +1,6 @@
-import { Gauge, Zap, Calendar } from 'lucide-react';
-import lamborghiniImg from '@/assets/car-lamborghini.jpg';
-import ferrariImg from '@/assets/car-ferrari.jpg';
-import porscheImg from '@/assets/car-porsche.jpg';
-
-interface Car {
-  id: number;
-  name: string;
-  brand: string;
-  price: string;
-  spec1: string;
-  spec2: string;
-  image: string;
-  badge?: string;
-}
-
-const cars: Car[] = [
-  {
-    id: 1,
-    name: 'Huracán EVO',
-    brand: 'Lamborghini',
-    price: 'R$ 3.490.000',
-    spec1: '0-100 km/h em 2.9s',
-    spec2: '640 cv',
-    image: lamborghiniImg,
-    badge: 'Destaque',
-  },
-  {
-    id: 2,
-    name: 'F8 Tributo',
-    brand: 'Ferrari',
-    price: 'R$ 4.200.000',
-    spec1: '0-100 km/h em 2.9s',
-    spec2: '710 cv',
-    image: ferrariImg,
-    badge: 'Exclusivo',
-  },
-  {
-    id: 3,
-    name: '911 Turbo S',
-    brand: 'Porsche',
-    price: 'R$ 1.850.000',
-    spec1: '0-100 km/h em 2.7s',
-    spec2: '650 cv',
-    image: porscheImg,
-  },
-];
+import { Link } from 'react-router-dom';
+import { Gauge, Zap } from 'lucide-react';
+import { cars } from '@/data/cars';
 
 const FeaturedCars = () => {
   return (
@@ -114,10 +70,13 @@ const FeaturedCars = () => {
                   <span className="text-lg font-bold text-foreground">
                     {car.price}
                   </span>
-                  <button className="text-sm font-semibold text-primary hover:text-gold-light transition-colors duration-300 flex items-center gap-2 group/btn">
+                  <Link 
+                    to={`/carro/${car.id}`}
+                    className="text-sm font-semibold text-primary hover:text-gold-light transition-colors duration-300 flex items-center gap-2 group/btn"
+                  >
                     Ver detalhes
                     <span className="transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
