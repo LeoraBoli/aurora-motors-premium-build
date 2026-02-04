@@ -107,19 +107,7 @@ const CarGallery = ({
       </div>
 
       {/* Thumbnails */}
-      <div className="flex gap-3 overflow-x-auto pb-2">
-        {galleryItems.map((item, index) => <button key={index} onClick={() => {
-        setActiveIndex(index);
-        setIsPlaying(false);
-      }} className={`relative flex-shrink-0 w-20 h-16 md:w-24 md:h-18 rounded-lg overflow-hidden transition-all duration-300 ${index === activeIndex ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : 'opacity-60 hover:opacity-100'}`}>
-            {item.type === 'video' ? <>
-                <video src={item.src} className="w-full h-full object-cover" muted />
-                <div className="absolute inset-0 flex items-center justify-center bg-background/30">
-                  <Play size={16} className="text-foreground" />
-                </div>
-              </> : <img src={item.src} alt={`${carName} thumbnail ${index + 1}`} className="w-full h-full object-cover" />}
-          </button>)}
-      </div>
+      
     </div>;
 };
 export default CarGallery;
