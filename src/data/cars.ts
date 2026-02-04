@@ -13,6 +13,7 @@ import ferrariVideo from '@/assets/ferrari-video.mp4';
 import rollsRoyceVideo from '@/assets/rolls-royce-video.mp4';
 import bentleyVideo from '@/assets/bentley-video.mp4';
 import audiEtronVideo from '@/assets/audi-etron-video.mp4';
+import amgGtVideo from '@/assets/amg-gt-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -220,6 +221,7 @@ export const cars: Car[] = [
     spec2: '730 cv',
     image: mercedesImg,
     gallery: [mercedesImg, mercedesImg, mercedesImg, mercedesImg],
+    video: amgGtVideo,
     badge: 'Limitado',
     description: 'O Mercedes-AMG GT Black Series é o modelo mais radical já produzido pela AMG. Com 730 cv e aerodinâmica derivada da GT3, é uma máquina de pista homologada para as ruas.',
     specs: [
