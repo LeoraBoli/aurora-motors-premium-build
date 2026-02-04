@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion, useInView, Variants } from 'framer-motion';
 
 interface UseScrollRevealOptions {
   threshold?: number;
@@ -37,7 +38,55 @@ export const useScrollReveal = (options: UseScrollRevealOptions = {}) => {
   return { ref, isVisible };
 };
 
-// Component wrapper for easy use
+// Animation variants for reuse
+export const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }
+  }
+};
+
+export const fadeInLeft: Variants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }
+  }
+};
+
+export const fadeInRight: Variants = {
+  hidden: { opacity: 0, x: 40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }
+  }
+};
+
+export const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
+  }
+};
+
+export const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1
+    }
+  }
+};
+
+// Framer Motion based ScrollReveal component
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
@@ -51,89 +100,101 @@ export const ScrollReveal = ({
   className = '',
   delay = 0,
   direction = 'up',
-  duration = 600,
+  duration = 0.6,
 }: ScrollRevealProps) => {
-  const { ref, isVisible } = useScrollReveal({ threshold: 0.1 });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
-  const getTransform = () => {
-    switch (direction) {
-      case 'up':
-        return 'translateY(40px)';
-      case 'down':
-        return 'translateY(-40px)';
-      case 'left':
-        return 'translateX(40px)';
-      case 'right':
-        return 'translateX(-40px)';
-      case 'none':
-        return 'none';
-      default:
-        return 'translateY(40px)';
-    }
+  const getVariants = (): Variants => {
+    const directions = {
+      up: { y: 50 },
+      down: { y: -50 },
+      left: { x: 50 },
+      right: { x: -50 },
+      none: {},
+    };
+
+    return {
+      hidden: { opacity: 0, ...directions[direction] },
+      visible: {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        transition: {
+          duration,
+          delay: delay / 1000,
+          ease: [0.43, 0.13, 0.23, 0.96],
+        },
+      },
+    };
   };
 
   return (
-    <div
+    <motion.div
       ref={ref}
       className={className}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'none' : getTransform(),
-        transition: `opacity ${duration}ms ease-out ${delay}ms, transform ${duration}ms ease-out ${delay}ms`,
-      }}
+      initial="hidden"
+      animate={isInView ? 'visible' : 'hidden'}
+      variants={getVariants()}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
-// Stagger children wrapper
+// Stagger children wrapper with Framer Motion
 interface StaggerRevealProps {
   children: React.ReactNode;
   className?: string;
   staggerDelay?: number;
-  direction?: 'up' | 'down' | 'left' | 'right';
 }
 
 export const StaggerReveal = ({
   children,
   className = '',
-  staggerDelay = 100,
-  direction = 'up',
+  staggerDelay = 0.1,
 }: StaggerRevealProps) => {
-  const { ref, isVisible } = useScrollReveal({ threshold: 0.1 });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
-  const getTransform = () => {
-    switch (direction) {
-      case 'up':
-        return 'translateY(30px)';
-      case 'down':
-        return 'translateY(-30px)';
-      case 'left':
-        return 'translateX(30px)';
-      case 'right':
-        return 'translateX(-30px)';
-      default:
-        return 'translateY(30px)';
-    }
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: staggerDelay,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.43, 0.13, 0.23, 0.96],
+      },
+    },
   };
 
   return (
-    <div ref={ref} className={className}>
+    <motion.div
+      ref={ref}
+      className={className}
+      initial="hidden"
+      animate={isInView ? 'visible' : 'hidden'}
+      variants={containerVariants}
+    >
       {Array.isArray(children)
         ? children.map((child, index) => (
-            <div
-              key={index}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'none' : getTransform(),
-                transition: `opacity 500ms ease-out ${index * staggerDelay}ms, transform 500ms ease-out ${index * staggerDelay}ms`,
-              }}
-            >
+            <motion.div key={index} variants={itemVariants}>
               {child}
-            </div>
+            </motion.div>
           ))
         : children}
-    </div>
+    </motion.div>
   );
 };
