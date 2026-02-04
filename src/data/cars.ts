@@ -9,6 +9,7 @@ import bentleyImg from '@/assets/car-bentley.jpg';
 import rollsRoyceImg from '@/assets/car-rolls-royce.jpg';
 import porscheVideo from '@/assets/porsche-video.mp4';
 import huracanVideo from '@/assets/huracan-video.mp4';
+import ferrariVideo from '@/assets/ferrari-video.mp4';
 
 export interface CarSpec {
   label: string;
@@ -80,6 +81,7 @@ export const cars: Car[] = [
     spec2: '710 cv',
     image: ferrariImg,
     gallery: [ferrariImg, ferrariImg, ferrariImg, ferrariImg],
+    video: ferrariVideo,
     badge: 'Exclusivo',
     description: 'O Ferrari F8 Tributo é uma homenagem ao motor V8 mais poderoso da história da marca. Com 710 cv extraídos de um propulsor biturbo de 3.9 litros, este superesportivo combina tecnologia de ponta derivada da Fórmula 1 com o design italiano mais refinado.',
     specs: [
